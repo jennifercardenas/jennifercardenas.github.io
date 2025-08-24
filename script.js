@@ -216,6 +216,11 @@ document.querySelectorAll(".category-icon .main-icon").forEach(img => {
         rect.style.backgroundColor = "#E9E9E9";
         rect.style.color = "black";
         rect.style.display = "none";
+
+        // Open the modal with resources
+        openActivityModal(rect.id);
+
+        console.log('Opened modal for:', rect.id);
       });
 
       document.querySelectorAll('.rectangle.white').forEach(rect => {
@@ -292,95 +297,6 @@ const canvas = document.getElementById('mindmap-canvas');
       console.log('Selected:', rect.id);
     });
   });
-
-  //Data for experiential learning activities 
-
-  // Data for Experiential Learning Activities
-const ACTIVITY_RESOURCES = {
-  "activity-1": {
-    title: "Hands-on lab experiments in thermodynamics, fluid mechanics, among others",
-    caseStudies: [
-      { name: "Thermodynamics Lab Case Study", url: "https://drive.google.com/link1" },
-      { name: "Fluid Mechanics Lab Case Study", url: "https://drive.google.com/link2" }
-    ],
-    templates: [
-      { name: "Lab Report Template (Word)", url: "https://drive.google.com/template1" },
-      { name: "Experimental Data Sheet (Excel)", url: "https://drive.google.com/template2" }
-    ]
-  },
-
-  "activity-2": {
-    title: "Capstone design projects to develop and prototype mechanical systems",
-    caseStudies: [
-      { name: "Capstone Project Guidebook", url: "https://drive.google.com/link3" }
-    ],
-    templates: [
-      { name: "Capstone Proposal Template", url: "https://drive.google.com/template3" },
-      { name: "Team Evaluation Rubric", url: "https://drive.google.com/template4" }
-    ]
-  },
-
-  "activity-29": {
-    title: "Cost estimation and budgeting exercises",
-    caseStudies: [
-      { name: "Bridge Design Cost Analysis", url: "https://drive.google.com/link5" },
-      { name: "Renewable Energy Budgeting Case", url: "https://drive.google.com/link6" }
-    ],
-    templates: [
-      { name: "Budget Worksheet (Excel)", url: "https://drive.google.com/template5" },
-      { name: "Budget Evaluation Rubric", url: "https://drive.google.com/template6" }
-    ]
-  },
-
-
-};
-
-// Modal elements
-const modal = document.getElementById("activityModal");
-const modalTitle = document.getElementById("modal-title");
-const caseStudiesList = document.getElementById("case-studies-list");
-const templatesList = document.getElementById("templates-list");
-const closeModalBtn = document.querySelector(".modal .close");
-
-// Open modal with activity data
-function openActivityModal(activityId) {
-  const data = ACTIVITY_RESOURCES[activityId];
-  if (!data) return;
-
-  // Update title
-  modalTitle.textContent = data.title;
-
-  // Populate Case Studies
-  caseStudiesList.innerHTML = "";
-  data.caseStudies.forEach(item => {
-    const li = document.createElement("li");
-    li.innerHTML = `<a href="${item.url}" target="_blank">${item.name}</a>`;
-    caseStudiesList.appendChild(li);
-  });
-
-  // Populate Templates
-  templatesList.innerHTML = "";
-  data.templates.forEach(item => {
-    const li = document.createElement("li");
-    li.innerHTML = `<a href="${item.url}" target="_blank">${item.name}</a>`;
-    templatesList.appendChild(li);
-  });
-
-  modal.style.display = "block";
-}
-
-// Close modal with X or outside click
-closeModalBtn.onclick = () => modal.style.display = "none";
-window.onclick = (event) => {
-  if (event.target === modal) modal.style.display = "none";
-};
-
-// Hook up grey rectangle clicks
-document.querySelectorAll('.rectangle.grey').forEach(rect => {
-  rect.addEventListener('click', () => {
-    openActivityModal(rect.id);
-  });
-});
 
 
 
