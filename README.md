@@ -2,7 +2,7 @@
 
 This is an online tool for graduate attributes developed by Smart Lab. 
 
-_Last updated: 28 Feb 2023_
+_Last updated: 28 Aug 2025_
 
 ## What's in this project?
 
