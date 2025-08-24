@@ -1,43 +1,3 @@
-/*
-  This is your site JavaScript code - you can add interactivity!
-*/
-
-// Print a message in the browser's dev tools console each time the page loads
-// Use your menus or right-click / control-click and choose "Inspect" > "Console"
-console.log("Hello 🌎");
-
-/* 
-Make the "Click me!" button move when the visitor clicks it:
-- First add the button to the page by following the steps in the TODO 🚧
-*/
-const btn = document.querySelector("button"); // Get the button from the page
-if (btn) { // Detect clicks on the button
-  btn.onclick = function () {
-    // The 'dipped' class in style.css changes the appearance on click
-    btn.classList.toggle("dipped");
-  };
-}
-
-
-// ----- GLITCH STARTER PROJECT HELPER CODE -----
-
-// Open file when the link in the preview is clicked
-let goto = (file, line) => {
-  window.parent.postMessage(
-    { type: "glitch/go-to-line", payload: { filePath: file, line: line } }, "*"
-  );
-};
-
-
- // Select all icons
- // const categoryIcons = document.querySelectorAll('.category-icon');
-
- // categoryIcons.forEach(icon => {
- //   icon.addEventListener('click', () => {
- //     // Toggle the 'selected' class on click
-  //    icon.classList.toggle('selected');
- //   });
-//  });
 
 //TOGGLE
 
@@ -52,9 +12,12 @@ let goto = (file, line) => {
   });
 
 
-
-
-// Mapping of category IDs to their learning and assessment items
+/*
+CATEGORY_DATA:
+Mapping of category IDs to their learning and assessment items
+- Example: category 1 highlights activity-1, activity-4, activity-7, and
+  assessment-1, assessment-4, assessment-7.
+*/
 const CATEGORY_DATA = {
   1: {
     learning: [1, 4, 7],
@@ -130,7 +93,6 @@ const RECTANGLE_COLORS = {
   11: "#F5CFE6",
   12: "#F1B9D9",
   
-  
   // Add up to category 12
 };
 
@@ -196,9 +158,7 @@ function toggleCategory(categoryId) {
 
 
 
-document.querySelectorAll('.rectangle').forEach(rect => {
-  rect.style.display = "none";
-});
+
 
 
 // Attach click handlers to category icons
@@ -216,11 +176,6 @@ document.querySelectorAll(".category-icon .main-icon").forEach(img => {
         rect.style.backgroundColor = "#E9E9E9";
         rect.style.color = "black";
         rect.style.display = "none";
-
-        // Open the modal with resources
-        openActivityModal(rect.id);
-
-        console.log('Opened modal for:', rect.id);
       });
 
       document.querySelectorAll('.rectangle.white').forEach(rect => {
@@ -247,9 +202,7 @@ document.querySelectorAll(".category-icon .main-icon").forEach(img => {
 
 
 
-
-
-const canvas = document.getElementById('mindmap-canvas');
+const canvas = document.getElementById('connectionCanvas');
       const ctx = canvas.getContext('2d');
 
       function resizeCanvas() {
@@ -261,24 +214,7 @@ const canvas = document.getElementById('mindmap-canvas');
       window.addEventListener('load', () => {
         resizeCanvas();
 
-        // Sample draw: Connect activity-1 to assessment-1
-        const from = document.getElementById('activity-1');
-        const to = document.getElementById('assessment-1');
-
-        const fromRect = from.getBoundingClientRect();
-        const toRect = to.getBoundingClientRect();
-
-        const startX = fromRect.right + window.scrollX;
-        const startY = fromRect.top + fromRect.height / 2 + window.scrollY;
-        const endX = toRect.left + window.scrollX;
-        const endY = toRect.top + toRect.height / 2 + window.scrollY;
-
-        ctx.beginPath();
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(endX, endY);
-        ctx.strokeStyle = 'blue';
-        ctx.lineWidth = 2;
-        ctx.stroke();
+        
       });
 
 
@@ -299,7 +235,38 @@ const canvas = document.getElementById('mindmap-canvas');
   });
 
 
+//Activities data
+// Popup elements
+const popup = document.getElementById('popup');
+const popupText = document.getElementById('popup-text');
+const closeBtn = document.getElementById('close');
 
+// If you want custom text per activity, add it here (optional):
+const ACTIVITY_INFO = {
+  "activity-1": "Details for Activity 1: Hands-on lab experiments…",
+  "activity-2": "Details for Activity 2: Capstone design projects…",
+  // ...add more as needed
+};
 
+// Make grey rectangles clickable and show popup
+document.querySelectorAll('.rectangle.grey').forEach(rect => {
+  rect.addEventListener('click', () => {
+    // visual selection (optional)
+    document.querySelectorAll('.rectangle.grey').forEach(el => el.classList.remove('selected'));
+    rect.classList.add('selected');
 
+    // Show custom info if provided; otherwise use the rectangle's own text
+    const info = ACTIVITY_INFO[rect.id] || rect.textContent.trim();
+    popupText.textContent = info;
 
+    popup.style.display = 'block';
+  });
+});
+
+// Close popup
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+}
+// Optional: click outside to close (if you add a backdrop later)
