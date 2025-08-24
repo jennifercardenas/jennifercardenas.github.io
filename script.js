@@ -253,7 +253,7 @@ const ACTIVITY_INFO = {
 const ACTIVITY_IMAGES = {
   "activity-1": "Images/CaseStudy1.png", 
   "activity-2": "https://via.placeholder.com/400x200?text=Activity+2+Image", 
-  "activity-7": "https://jennifercardenas.github.io/Images/CaseStudy-ReverseEngineering.png",
+  "activity-7": "Images/CaseStudy-ReverseEngineering.png",
   // ADD MORE ACTIVITIES AS NEEDED
 };
 
