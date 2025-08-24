@@ -239,6 +239,7 @@ const canvas = document.getElementById('connectionCanvas');
 // Popup elements
 const popup = document.getElementById('popup');
 const popupActivity = document.getElementById('popup-activity');
+const popupImage = document.getElementById('popup-image');
 const closeBtn = document.getElementById('close');
 
 // If you want custom text per activity, add it here (optional):
@@ -246,6 +247,22 @@ const ACTIVITY_INFO = {
   "activity-1": "Details for Activity 1: Hands-on lab experiments…",
   "activity-2": "Details for Activity 2: Capstone design projects…",
   // ...add more as needed
+};
+
+// NEW: MAP OF ACTIVITY IDS TO IMAGE URLS
+const ACTIVITY_IMAGES = {
+  "activity-1": "Images/CaseStudy1.png", 
+  "activity-2": "https://via.placeholder.com/400x200?text=Activity+2+Image", 
+  "activity-7": "https://jennifercardenas.github.io/Images/CaseStudy-ReverseEngineering.png",
+  // ADD MORE ACTIVITIES AS NEEDED
+};
+
+// NEW: MAP OF ACTIVITY IDS TO TITLE COLORS
+const ACTIVITY_COLORS = {
+  "activity-1": "#FF5733", // RED-ORANGE FOR ACTIVITY 1
+  "activity-2": "#3399FF", // BLUE FOR ACTIVITY 2
+  "activity-7": "#578EE7", // Knowledge activity color
+  // ADD MORE ACTIVITIES AS NEEDED
 };
 
 // Make grey rectangles clickable and show popup
@@ -258,7 +275,12 @@ document.querySelectorAll('.rectangle.grey').forEach(rect => {
     // Show the rectangle’s own text at the very top
     popupActivity.textContent = rect.textContent.trim();
 
-    
+    // Title color based on learning activity activity
+    popupActivity.style.color = ACTIVITY_COLORS[rect.id] || "#000000"; // DEFAULT BLACK
+
+     // Case study image based on learning activity
+    popupImage.src = ACTIVITY_IMAGES[rect.id] || ""; // EMPTY IF NO IMAGE
+    popupImage.style.display = popupImage.src ? "block" : "none"; // HIDE IF NO IMAGE
 
     popup.style.display = 'block';
   });
