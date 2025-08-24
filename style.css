@@ -1,4 +1,3 @@
-
 * {
   overflow: visible !important;
 }
@@ -327,14 +326,30 @@ input:checked + .slider:before {
 .popup {
   display: none; /* hidden by default */
   position: fixed;
+  width: 985px;
+  height: 554px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 5000;  
   background: white;
   padding: 20px;
   border: 2px solid #333;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Popup box */
+.popup-content {
+  background: white;
+  margin: 0% auto;
+  padding: 20px;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* stack top and bottom */
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 /* Close button */
@@ -346,4 +361,65 @@ input:checked + .slider:before {
   font-size: 20px;
 }
 
+/* Top section case study*/
+.popup-top {
+  flex: 7; /* 70% space */
+  min-height: 0;
+  display: flex;
+  flex-direction: column; /* to center title & content */
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  overflow: auto; /* content stays inside if too big */
+}
 
+.popup-top h3 {
+  margin: 0 0 2px 0;
+  text-align: center;
+}
+.popup-top img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+
+/* Bottom section (links) */
+.popup-bottom {
+  flex: 3; /* 30% space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; /* center the title horizontally */
+  text-align: center;
+  padding: 10px;
+  overflow-y: auto;
+  
+}
+
+.popup-bottom h3 {
+  margin-bottom: 10px;
+}
+
+.popup-bottom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popup-bottom ul li {
+  margin: 5px 0;
+}
+
+.popup-bottom ul li a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.popup-top h2 {
+  margin: 0 0 5px 0; /* remove white space above */
+  text-align: center;
+  font-size: 22px;   /* make it stand out */
+  font-weight: bold;
+}

@@ -238,7 +238,7 @@ const canvas = document.getElementById('connectionCanvas');
 //Activities data
 // Popup elements
 const popup = document.getElementById('popup');
-const popupText = document.getElementById('popup-text');
+const popupActivity = document.getElementById('popup-activity');
 const closeBtn = document.getElementById('close');
 
 // If you want custom text per activity, add it here (optional):
@@ -255,9 +255,10 @@ document.querySelectorAll('.rectangle.grey').forEach(rect => {
     document.querySelectorAll('.rectangle.grey').forEach(el => el.classList.remove('selected'));
     rect.classList.add('selected');
 
-    // Show custom info if provided; otherwise use the rectangle's own text
-    const info = ACTIVITY_INFO[rect.id] || rect.textContent.trim();
-    popupText.textContent = info;
+    // Show the rectangle’s own text at the very top
+    popupActivity.textContent = rect.textContent.trim();
+
+    
 
     popup.style.display = 'block';
   });
@@ -269,4 +270,3 @@ if (closeBtn) {
     popup.style.display = 'none';
   });
 }
-// Optional: click outside to close (if you add a backdrop later)
