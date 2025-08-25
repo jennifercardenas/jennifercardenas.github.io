@@ -253,14 +253,6 @@ const ACTIVITY_INFO = {
   // ...add more as needed
 };
 
-<<<<<<< HEAD
-// NEW: MAP OF ACTIVITY IDS TO IMAGE URLS
-const ACTIVITY_IMAGES = {
-  "activity-1": "Images/CaseStudy1.png", 
-  "activity-2": "https://via.placeholder.com/400x200?text=Activity+2+Image", 
-  "activity-7": "Images/CaseStudy-ReverseEngineering.png",
-  // ADD MORE ACTIVITIES AS NEEDED
-=======
 // NEW: MAP OF CASE STUDY IMAGES LINKS FOR EACH LEARNING ACTIVITY
 const ACTIVITY_IMAGES = {
   //Graduate attribute 1: Knowledge base
@@ -278,7 +270,6 @@ const ACTIVITY_IMAGES = {
   //Graduate attribute 10: Ethis and equity
   "activity-31": "Images/ga10-casestudy1.png",
 
->>>>>>> gh-pages
 };
 
 // NEW: MAP OF ACTIVITY IDS TO DOWNLOAD LINK AND LINK TEXT
@@ -466,3 +457,4 @@ if (closeBtn) {
     popup.style.display = 'none';
   });
 }
+
