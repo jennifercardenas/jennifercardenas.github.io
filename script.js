@@ -257,12 +257,79 @@ const ACTIVITY_IMAGES = {
   // ADD MORE ACTIVITIES AS NEEDED
 };
 
+// NEW: MAP OF ACTIVITY IDS TO DOWNLOAD LINK AND LINK TEXT
+const ACTIVITY_DOWNLOADS = {
+  "activity-1": {
+    url: "https://docs.google.com/document/d/1ySSiB2JSHtFZbWfc9uWaZagOa_OnEJtT0GXbC3wq5HU/edit?usp=sharing",
+    text: "CAD Model Step by Step File"
+  },
+  "activity-2": {
+    url: "https://docs.google.com/document/d/2EXAMPLELINK/activity2",
+    text: "Instructions Template"
+  },
+  "activity-7": {
+    url: "https://docs.google.com/document/d/1ySSiB2JSHtFZbWfc9uWaZagOa_OnEJtT0GXbC3wq5HU/edit?usp=sharing",
+    text: "Reverse Engineering Worksheet"
+  },
+  // ADD MORE ACTIVITIES AS NEEDED
+};
+
+// GET LINK ELEMENT
+const popupTemplateLink = document.getElementById('popup-template-link');
+
 // NEW: MAP OF ACTIVITY IDS TO TITLE COLORS
 const ACTIVITY_COLORS = {
-  "activity-1": "#FF5733", // RED-ORANGE FOR ACTIVITY 1
-  "activity-2": "#3399FF", // BLUE FOR ACTIVITY 2
-  "activity-7": "#578EE7", // Knowledge activity color
-  // ADD MORE ACTIVITIES AS NEEDED
+  // Knowledge base activities
+  "activity-1": "#4F89E7", 
+  "activity-4": "#4F89E7", 
+  "activity-7": "#4F89E7", 
+  // Problem analysis activities
+  "activity-10": "#10A6D8",
+  "activity-13": "#10A6D8",
+  "activity-16": "#10A6D8",
+  //Investigation activities
+  "activity-19": "#35C27F",
+  "activity-22": "#35C27F",
+  "activity-25": "#35C27F",
+  // Design activities
+  "activity-2": "#90BC35",
+  "activity-5": "#90BC35",
+  "activity-8": "#90BC35",
+  //Use of engineering tools activities
+  "activity-11": "#CDBB15",
+  "activity-14": "#CDBB15",
+  "activity-17": "#CDBB15",
+  //Individual and teamwork activities
+  "activity-20": "#E9AB72",
+  "activity-23": "#E9AB72",
+  "activity-26": "#E9AB72",
+  //Communication skills activities
+  "activity-3": "#F09D74",
+  "activity-6": "#F09D74",
+  "activity-9": "#F09D74",
+  //Professionalism activities
+  "activity-12": "#F2AA84",
+  "activity-15": "#F2AA84",
+  "activity-18": "#F2AA84",
+  //Impact of engineering activities
+  "activity-21": "#B684DC",
+  "activity-24": "#B684DC",
+  "activity-27": "#B684DC",
+  //Ethics and equity activities
+  "activity-28": "#9D58D0",
+  "activity-31": "#9D58D0",
+  "activity-34": "#9D58D0",
+  //Economics and project management activities
+  "activity-29": "#E993C6",
+  "activity-32": "#E993C6",
+  "activity-35": "#E993C6",
+  //Lifelong learning activities
+  "activity-30": "#E472B3",
+  "activity-33": "#E472B3",
+  "activity-36": "#E472B3",
+
+
+
 };
 
 // Make grey rectangles clickable and show popup
@@ -281,6 +348,15 @@ document.querySelectorAll('.rectangle.grey').forEach(rect => {
      // Case study image based on learning activity
     popupImage.src = ACTIVITY_IMAGES[rect.id] || ""; // EMPTY IF NO IMAGE
     popupImage.style.display = popupImage.src ? "block" : "none"; // HIDE IF NO IMAGE
+
+    // UPDATE DOWNLOAD LINK AND TEXT
+    if(ACTIVITY_DOWNLOADS[rect.id]) {
+      popupTemplateLink.href = ACTIVITY_DOWNLOADS[rect.id].url;
+      popupTemplateLink.textContent = ACTIVITY_DOWNLOADS[rect.id].text;
+    } else {
+      popupTemplateLink.href = "#"; 
+      popupTemplateLink.textContent = "Download Template";
+    }
 
     popup.style.display = 'block';
   });
