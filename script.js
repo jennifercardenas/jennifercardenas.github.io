@@ -253,12 +253,32 @@ const ACTIVITY_INFO = {
   // ...add more as needed
 };
 
+<<<<<<< HEAD
 // NEW: MAP OF ACTIVITY IDS TO IMAGE URLS
 const ACTIVITY_IMAGES = {
   "activity-1": "Images/CaseStudy1.png", 
   "activity-2": "https://via.placeholder.com/400x200?text=Activity+2+Image", 
   "activity-7": "Images/CaseStudy-ReverseEngineering.png",
   // ADD MORE ACTIVITIES AS NEEDED
+=======
+// NEW: MAP OF CASE STUDY IMAGES LINKS FOR EACH LEARNING ACTIVITY
+const ACTIVITY_IMAGES = {
+  //Graduate attribute 1: Knowledge base
+  "activity-1": "Images/CaseStudy1.png", 
+  //Graduate attribute 2: Problem analysis
+  "activity-10": "Images/cs-2.png",
+  //Graduate attribute 3: Investigation
+  "activity-22": "Images/cs-3.png",
+  //Graduate attribute 4: Design
+  "activity-5": "Images/cs-4.png",
+  //Graduate attribute 7: Communication skills
+  "activity-6": "Images/ga7-casestudy1.png",
+  //Graduate attribute 9: Impact of engineering on society and environment
+  "activity-21": "Images/ga9-casestudy1.png",
+  //Graduate attribute 10: Ethis and equity
+  "activity-31": "Images/ga10-casestudy1.png",
+
+>>>>>>> gh-pages
 };
 
 // NEW: MAP OF ACTIVITY IDS TO DOWNLOAD LINK AND LINK TEXT
