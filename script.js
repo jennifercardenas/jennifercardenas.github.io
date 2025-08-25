@@ -239,8 +239,12 @@ const canvas = document.getElementById('connectionCanvas');
 // Popup elements
 const popup = document.getElementById('popup');
 const popupActivity = document.getElementById('popup-activity');
+const popupCaseStudy = document.getElementById('popup-case-study');
+const popupDownloable = document.getElementById('popup-downloable');
 const popupImage = document.getElementById('popup-image');
 const closeBtn = document.getElementById('close');
+const popupBanner = document.getElementById('popup-banner');
+
 
 // If you want custom text per activity, add it here (optional):
 const ACTIVITY_INFO = {
@@ -276,6 +280,61 @@ const ACTIVITY_DOWNLOADS = {
 
 // GET LINK ELEMENT
 const popupTemplateLink = document.getElementById('popup-template-link');
+
+// NEW: MAP OF ACTIVITY IDS TO BANNER IMAGES
+const ACTIVITY_BANNERS = {
+  //Graduate attribute 1: Knowledge base
+  "activity-1": "Images/ga1-banner.png",
+  "activity-4": "Images/ga1-banner.png",
+  "activity-7": "Images/ga1-banner.png",
+  // Graduate attribute 2: Problem analysis
+  "activity-10": "Images/ga2-banner.png",
+  "activity-13": "Images/ga2-banner.png",
+  "activity-16": "Images/ga2-banner.png",
+  //Graduate attribute 3: Investigation
+  "activity-19": "Images/ga3-banner.png",
+  "activity-22": "Images/ga3-banner.png",
+  "activity-25": "Images/ga3-banner.png",
+  //Graduate attribute 4: Design 
+  "activity-2": "Images/ga4-banner.png",
+  "activity-5": "Images/ga4-banner.png",
+  "activity-8": "Images/ga4-banner.png",
+  //Graduate attribute 5: Use of engineering tools activities
+  "activity-11": "Images/ga5-banner.png",
+  "activity-14": "Images/ga5-banner.png",
+  "activity-17": "Images/ga5-banner.png",
+  //Graduate attribute 6: Individual and teamwork activities
+  "activity-20": "Images/ga6-banner.png",
+  "activity-23": "Images/ga6-banner.png",
+  "activity-26": "Images/ga6-banner.png",
+   //Graduate attribute 7: Communication skills activities
+  "activity-3": "Images/ga7-banner.png",
+  "activity-6": "Images/ga7-banner.png",
+  "activity-9": "Images/ga7-banner.png",
+  ///Graduate attribute 8: Professionalism
+  "activity-12": "Images/ga8-banner.png",
+  "activity-15": "Images/ga8-banner.png",
+  "activity-18": "Images/ga8-banner.png",
+  //Graduate attribute 9: Impact of engineering activities
+  "activity-21": "Images/ga9-banner.png",
+  "activity-24": "Images/ga9-banner.png",
+  "activity-27": "Images/ga9-banner.png",
+  //Graduate attribute 10: Ethics and quality
+  "activity-28": "Images/ga10-banner.png",
+  "activity-31": "Images/ga10-banner.png",
+  "activity-34": "Images/ga10-banner.png",
+  //Graduate attribute 11: Economics and project management 
+  "activity-29": "Images/ga11-banner.png",
+  "activity-32": "Images/ga11-banner.png",
+  "activity-35": "Images/ga11-banner.png",
+  //Graduate attribute 12: Lifelong learning activities
+  "activity-30": "Images/ga12-banner.png",
+  "activity-33": "Images/ga12-banner.png",
+  "activity-36": "Images/ga12-banner.png",
+
+};
+
+
 
 // NEW: MAP OF ACTIVITY IDS TO TITLE COLORS
 const ACTIVITY_COLORS = {
@@ -332,6 +391,7 @@ const ACTIVITY_COLORS = {
 
 };
 
+//LOGIC FOR THE POPUP
 // Make grey rectangles clickable and show popup
 document.querySelectorAll('.rectangle.grey').forEach(rect => {
   rect.addEventListener('click', () => {
@@ -342,12 +402,28 @@ document.querySelectorAll('.rectangle.grey').forEach(rect => {
     // Show the rectangle’s own text at the very top
     popupActivity.textContent = rect.textContent.trim();
 
+    // Banner color
+    
+    popupBanner.src = ACTIVITY_BANNERS[rect.id] || "";
+    popupBanner.style.display = popupBanner.src ? "block" : "none";
+    
     // Title color based on learning activity activity
     popupActivity.style.color = ACTIVITY_COLORS[rect.id] || "#000000"; // DEFAULT BLACK
+
+    // Title case study color based on learning activity activity
+    popupCaseStudy.style.color = ACTIVITY_COLORS[rect.id] || "#000000"; // DEFAULT BLACK
+
+    // Title downloable color based on learning activity activity
+    popupDownloable.style.color = ACTIVITY_COLORS[rect.id] || "#000000"; // DEFAULT BLACK
+
+    // Popup Border color
+    popup.style.border = ACTIVITY_COLORS[rect.id]
 
      // Case study image based on learning activity
     popupImage.src = ACTIVITY_IMAGES[rect.id] || ""; // EMPTY IF NO IMAGE
     popupImage.style.display = popupImage.src ? "block" : "none"; // HIDE IF NO IMAGE
+
+    
 
     // UPDATE DOWNLOAD LINK AND TEXT
     if(ACTIVITY_DOWNLOADS[rect.id]) {
@@ -357,6 +433,8 @@ document.querySelectorAll('.rectangle.grey').forEach(rect => {
       popupTemplateLink.href = "#"; 
       popupTemplateLink.textContent = "Download Template";
     }
+
+
 
     popup.style.display = 'block';
   });

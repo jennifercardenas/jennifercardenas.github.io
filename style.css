@@ -327,7 +327,7 @@ input:checked + .slider:before {
   display: none; /* hidden by default */
   position: fixed;
   width: 1085px;
-  height: 754px;
+  height: 800px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -453,3 +453,22 @@ input:checked + .slider:before {
   margin-top: 0; /* ENSURE NO EXTRA TOP MARGIN INTERFERES */
 }
 
+/* Header banner wrapper */
+.popup-header {
+  width: 100%;
+  height: auto; 
+  border-radius: 5px 5px 0 0; /* round only top corners */
+  overflow: hidden; /* prevents image overflow */
+}
+
+/* Banner image */
+#popup-banner {
+  width: full;    /* full width */
+  height: auto;   /* fixed height (adjust as needed) */
+  object-fit: contain; /* ensures image fills space nicely */
+  display: block;
+}
+
+.popup-top h2 {
+  margin-top: 15px; /* adds space from banner */
+}
