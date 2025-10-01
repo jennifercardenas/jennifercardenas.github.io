@@ -246,7 +246,7 @@ const closeBtn = document.getElementById('close');
 const popupBanner = document.getElementById('popup-banner');
 
 
-// If you want custom text per activity, add it here (optional):
+// If you want custom text per activity:
 const ACTIVITY_INFO = {
   "activity-1": "Details for Activity 1: Hands-on lab experiments…",
   "activity-2": "Details for Activity 2: Capstone design projects…",
@@ -256,12 +256,19 @@ const ACTIVITY_INFO = {
 // NEW: MAP OF CASE STUDY IMAGES LINKS FOR EACH LEARNING ACTIVITY
 const ACTIVITY_IMAGES = {
   //Graduate attribute 1: Knowledge base
-  "activity-1": "Images/CaseStudy1.png", 
+  "activity-1": "Images/cs-1.png",
+  "activity-7": "Images/CaseStudy-ReverseEngineering.png", 
+  "activity-4": "Images/cs-1.3.png",
   //Graduate attribute 2: Problem analysis
   "activity-10": "Images/cs-2.png",
+  "activity-13": "Images/cs-2.1.png",
+  "activity-16": "Images/cs-2.3.png",
   //Graduate attribute 3: Investigation
+  "activity-19": "Images/cs-3.1.png",
   "activity-22": "Images/cs-3.png",
+  "activity-25": "Images/cs-3.3.png",
   //Graduate attribute 4: Design
+  "activity-2": "Images/cs-4.1.png",
   "activity-5": "Images/cs-4.png",
   //Graduate attribute 7: Communication skills
   "activity-6": "Images/ga7-casestudy1.png",
@@ -278,9 +285,9 @@ const ACTIVITY_DOWNLOADS = {
     url: "https://docs.google.com/document/d/1ySSiB2JSHtFZbWfc9uWaZagOa_OnEJtT0GXbC3wq5HU/edit?usp=sharing",
     text: "CAD Model Step by Step File"
   },
-  "activity-2": {
-    url: "https://docs.google.com/document/d/2EXAMPLELINK/activity2",
-    text: "Instructions Template"
+  "activity-5": {
+    url: "https://docs.google.com/presentation/d/1ZksCumkfwFEpCZfoQI-uui-04R2pluKj/edit?usp=sharing&ouid=116558492720556286136&rtpof=true&sd=true",
+    text: "Human-centered group workshop"
   },
   "activity-7": {
     url: "https://docs.google.com/document/d/1ySSiB2JSHtFZbWfc9uWaZagOa_OnEJtT0GXbC3wq5HU/edit?usp=sharing",
@@ -457,4 +464,14 @@ if (closeBtn) {
     popup.style.display = 'none';
   });
 }
+
+// Close popup when clicking outside of it
+window.addEventListener('click', function(event) {
+  const isInsidePopup = popup.contains(event.target);
+  const isActivityRect = event.target.closest('.rectangle.grey');
+
+  if (popup.style.display === 'block' && !isInsidePopup && !isActivityRect) {
+    popup.style.display = 'none';
+  }
+});
 
