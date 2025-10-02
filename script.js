@@ -270,12 +270,30 @@ const ACTIVITY_IMAGES = {
   //Graduate attribute 4: Design
   "activity-2": "Images/cs-4.1.png",
   "activity-5": "Images/cs-4.png",
+  "activity-8": "Images/cs-4.3.png",
   //Graduate attribute 7: Communication skills
+  "activity-3": "Images/cs-7.1.png",
   "activity-6": "Images/ga7-casestudy1.png",
+  "activity-9": "Images/cs-7.3.png",
+  //Graduate attribute 8: Professionalism
+  "activity-12": "Images/cs-8.1.png",
+  "activity-15": "Images/cs-8.2.png",
   //Graduate attribute 9: Impact of engineering on society and environment
   "activity-21": "Images/ga9-casestudy1.png",
+  "activity-24": "Images/cs-9.2.png",
+  "activity-27": "Images/cs-9.3.png",
   //Graduate attribute 10: Ethis and equity
+  "activity-28": "Images/cs-10.1.png",
   "activity-31": "Images/ga10-casestudy1.png",
+  "activity-34": "Images/cs-10.3.png",
+  //Graduate attribute 11: Economics and management
+  "activity-29": "Images/cs-11.1.png",
+  "activity-32": "Images/cs-11.2.png",
+  "activity-35": "Images/cs-11.3.png",
+  //Graduate attribute 12: Lifelong learning
+  "activity-30": "Images/cs-12.1.png",
+  "activity-33": "Images/cs-12.2.png",
+  "activity-36": "Images/cs-12.3.png",
 
 };
 
@@ -474,4 +492,5 @@ window.addEventListener('click', function(event) {
     popup.style.display = 'none';
   }
 });
+
 
